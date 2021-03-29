@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="helloworldModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="helloworldEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="helloworlds" EntityType="helloworldModel.helloworlds" />
+  </EntityContainer>
+  <EntityType Name="helloworlds">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="man" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="introduce" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="skill" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="href" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+</Schema>

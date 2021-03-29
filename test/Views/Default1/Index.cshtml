@@ -1,0 +1,215 @@
+﻿@model IEnumerable<test.Models.helloworlds>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    img {
+        color: #6f6149;
+        vertical-align: middle;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .txt {
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+
+    .carousel-inner > .item > img {
+        margin: auto;
+    }
+
+    .A {
+        border-color: #000;
+    }
+
+    p {
+        line-height: 1.8;
+    }
+
+    .product-item:nth-child(1) {
+        background: #fff;
+    }
+
+    .product-item:nth-child(2) {
+        background: #e23130;
+        color: #fff;
+    }
+</style>
+<script>
+    $(function () {
+        $.get('@Url.Action("get_data", "Default1")', function (response) {
+            for (var i = 1 ; i < 4; i++) {
+                $("#images" + i).attr("src", response[response.length - i].href);
+                $("#images" + i).css("width", "600", "height", "400");
+
+                $("#a" + i).attr("href", "Default1/Introduce/" + response[response.length - i].ID);
+            }
+            for (var i = 0 ; i < 2; i++) {
+                $("#img" + i).attr("src", response[i].href);
+                $("#man" + i).html(response[i].man);
+                $("#age" + i).html(response[i].age);
+                $("#intro" + i).html(response[i].introduce);
+            }
+            //$("#imagesF").attr("src", response[response.length - 1].href);
+            //$("#imagesS").attr("src", response[response.length - 2].href);
+            //$("#imagesT").attr("src", response[response.length - 3].href);
+            //$("#imagesF").css("width", "600", "height", "400");
+            //$("#imagesS").css("width", "600", "height", "400");
+            //$("#imagesT").css("width", "600", "height", "400");
+
+            //$("#aF").attr("href", "Default1/Introduce/" + response[response.length - 1].ID);
+            //$("#aS").attr("href", "Default1/Introduce/" + response[response.length - 2].ID);
+            //$("#aT").attr("href", "Default1/Introduce/" + response[response.length - 3].ID);
+            //console.log("1."+response[response.length - 1].ID);
+
+            //$("#imgF").attr("src", response[0].href);
+            //$("#imgS").attr("src", response[1].href);
+            //$("#manF").html(response[0].man);
+            //$("#manS").html(response[1].man);
+            //$("#ageF").html(response[0].age);
+            //$("#ageS").html(response[1].age);
+            //$("#introF").html(response[0].introduce);
+            //$("#introS").html(response[1].introduce);
+            //console.log("1." + response[0].man);
+        });
+    })
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            @* 時間 data-interval="0050"*@
+            <div id="carousel-id" class="carousel slide" data-ride="carousel">
+                <!-- 幻燈片小圓點區 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-id" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-id" data-slide-to="1" class=""></li>
+                    <li data-target="#carousel-id" data-slide-to="2" class=""></li>
+                </ol>
+                <!-- 幻燈片主圖區 -->
+                <div class="carousel-inner">
+                    <div class="item active text-center" >
+                        <img id="images1" src="#"/>
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>我好帥</h1>
+                                <p>你愛上我了嗎？</p>
+                                <a id="a1" href="#">
+                                    <div class="btn btn-lg btn-primary" role="button">選我選我</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item text-center">
+                        <img id="images2" src="#" />
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>我好可愛</h1>
+                                <p>你愛上我了嗎？</p>
+                                <a id="a2" href="#">
+                                    <div class="btn btn-lg btn-primary" role="button">選我選我</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item text-center">
+                        <img id="images3" src="#" />
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>我好性感</h1>
+                                <p>你愛上我了嗎？</p>
+                                <a id="a3" href="#">
+                                    <div class="btn btn-lg btn-primary" role="button">選我選我</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 上下頁控制區 -->
+                <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header A">
+                <h1>屁股精選<small>超鮮肉</small></h1>
+            </div>
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <a href="@Url.Action("Introduce", "Default1", new { id = @item.ID })">
+                            <img src="@item.href" alt="挖勒 鮮肉辭職啦!!"></a>
+                    </div>
+                 }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header A">
+                <h1>本周最夯MVP</h1>
+            </div>
+        </div>
+    </div>
+    <div class="product-item">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="pic">
+                        <img id="img0" src="#">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 ">
+                    <div class="txt">
+                        <h3>綽號:</h3>
+                        <p id="man0"></p>
+                        <h3>年齡:</h3>
+                        <p id="age0"></p>
+                        <h3>自我介紹:</h3>
+                        <p id="intro0"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-item">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                    <div class="pic">
+                        <img id="img1" src="#">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                    <div class="txt">
+                        <h3>綽號:</h3>
+                        <p id="man1"></p>
+                        <h3>年齡:</h3>
+                        <p id="age1"></p>
+                        <h3>自我介紹:</h3>
+                        <p id="intro1"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+$(".owl-carousel").owlCarousel({
+            items: 6, // 一次輪播幾個項目
+            loop: true, // 循環輪播
+            margin: 10, // 與右邊圖片的距離
+            nav: true, // 導航文字
+            autoplay: true, // 自動輪播
+            autoplayTimeout: 4000, // 切換時間
+            autoplayHoverPause: true // 滑鼠經過時暫停
+})
+
+</script>

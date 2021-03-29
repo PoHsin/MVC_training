@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+    @*<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>*@
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - Hello Baby</title>
+    @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />*@
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/bundles/bootstrapcss")
+    @Styles.Render("~/bundles/carouselcss")
+    <link rel="stylesheet" href="~/Content/jquery.fileupload.css">
+    <link rel="stylesheet" href="~/Content/jquery.fileupload-ui.css">
+
+    <style>
+        #body {
+              background-color:#fff;
+        }
+        body {
+            border-top:0px; 
+            background-color:#fff;
+        }
+        .a {
+            background-color: #fff;
+            border:0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            @*navbar-fixed-top*@ 
+            <nav class="navbar navbar-default a"role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">選單切換<</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Default1")">Hello Baby</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "Default1")"><i class="glyphicon glyphicon-th"></i>首頁</a></li>
+                        <li><a href="@Url.Action("SearchIndex", "Default1")"><i class="glyphicon glyphicon-list-alt"></i>查詢</a></li>
+                        <li><a href="@Url.Action("rank", "Default1")"><i class="glyphicon glyphicon-stats"></i>排行榜</a></li>
+                        <li><a href="@Url.Action("Create", "Default1")"><i class="glyphicon glyphicon-user"></i>新肉註冊</a></li>
+                        <li><a href="@Url.Action("Editindex", "Default1")"><i class="glyphicon glyphicon-pencil"></i>編輯肉肉</a></li>
+                        <li><a href="@Url.Action("Uploadtest", "Default1")"><i class="glyphicon glyphicon-pencil"></i>上傳肉肉</a></li>
+                        @*<li><a href="@Url.Action("Edit", "Default1",new { id=1 })"><i class="glyphicon glyphicon-list-alt"></i>編輯</a></li>*@
+                    </ul>
+                    @*<form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="請輸入關鍵字">
+                        </div>
+                        <button type="submit" class="btn btn-default">搜尋</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">連結</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉選單<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">下拉子選單項目</a></li>
+                                <li><a href="#">下拉子選單項目</a></li>
+                                <li><a href="#">下拉子選單項目</a></li>
+                                <li><a href="#">下拉子選單項目</a></li>
+                            </ul>
+                        </li>
+                    </ul>*@
+                </div>
+            </nav>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrapjs")
+    @Scripts.Render("~/bundles/carouseljs")
+    @Scripts.Render("~/bundles/highchartsjs")
+    @RenderSection("scripts", required: false)
+    
+   
+    
+    <div id="body">
+         @RenderSection("featured", required: false)
+         @*<section class="content-wrapper main-content clear-fix">*@
+              @RenderBody()
+         @*</section>*@
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Hello Baby</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        $(function () {
+            $('.coverflow').css('max-width', $('.coverflow img').width());
+            $('.coverflow').css('max-height', $('.coverflow img').height());
+        });
+       
+    </script>
+
+
+
+</body>
+</html>

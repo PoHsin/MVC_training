@@ -1,0 +1,88 @@
+﻿@model test.Models.helloworlds
+
+@{
+    ViewBag.Title = "Introduce";
+}
+
+@using (Html.BeginForm()) {
+     @Html.HiddenFor(model => model.ID)
+     @Html.HiddenFor(model => model.man)
+     @Html.HiddenFor(model => model.age)
+     @Html.HiddenFor(model => model.introduce)
+     @Html.HiddenFor(model => model.href)
+     @Html.HiddenFor(model => model.price) 
+     @Html.HiddenFor(model => model.skill)
+<div class="container">
+			<div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <img src="@Model.href" class="img-responsive" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="txt">
+							<h2>綽號:</h2>
+                            <p>@Model.man</p>
+                            <h2>年齡:</h2>
+                            <p>@Model.age 歲</p>
+                            <h2>自我介紹:</h2>
+							<p>@Model.introduce</p>
+                            <h2>價格:</h2>
+							<p>@Model.price USD</p>
+					</div>
+                    <input class="btn btn-lg btn-primary" type="submit" value="投我一票" />
+                </div>
+            </div>
+</div>
+}
+
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.man)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.introduce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.skill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.href)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.man)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.introduce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.skill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.href)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>*@

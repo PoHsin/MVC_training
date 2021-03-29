@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="helloworldModelStoreContainer" CdmEntityContainer="helloworldEntities">
+    <EntitySetMapping Name="helloworlds">
+      <EntityTypeMapping TypeName="helloworldModel.helloworlds">
+        <MappingFragment StoreEntitySet="helloworlds">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="man" ColumnName="man" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="introduce" ColumnName="introduce" />
+          <ScalarProperty Name="skill" ColumnName="skill" />
+          <ScalarProperty Name="href" ColumnName="href" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

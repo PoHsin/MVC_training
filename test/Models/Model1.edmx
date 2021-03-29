@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="helloworldModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="helloworldModelStoreContainer">
+          <EntitySet Name="helloworlds" EntityType="helloworldModel.Store.helloworlds" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="helloworlds">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="man" Type="nvarchar(max)" />
+          <Property Name="age" Type="int" />
+          <Property Name="introduce" Type="nvarchar(max)" />
+          <Property Name="skill" Type="nvarchar(max)" />
+          <Property Name="href" Type="nvarchar(max)" />
+          <Property Name="price" Type="money" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="helloworldModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="helloworldEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="helloworlds" EntityType="helloworldModel.helloworlds" />
+        </EntityContainer>
+        <EntityType Name="helloworlds">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="man" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="introduce" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="skill" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="href" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="helloworldModelStoreContainer" CdmEntityContainer="helloworldEntities">
+          <EntitySetMapping Name="helloworlds">
+            <EntityTypeMapping TypeName="helloworldModel.helloworlds">
+              <MappingFragment StoreEntitySet="helloworlds">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="man" ColumnName="man" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="introduce" ColumnName="introduce" />
+                <ScalarProperty Name="skill" ColumnName="skill" />
+                <ScalarProperty Name="href" ColumnName="href" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

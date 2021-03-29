@@ -1,0 +1,105 @@
+﻿@model IEnumerable<test.Models.helloworlds>
+
+@{
+    ViewBag.Title = "Editindex";
+}
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+			<div class="row">
+                <div class="col-xs-12 col-sm-offset-1">
+@*                    @Html.ActionLink("Create New", "Create") *@
+                    @* @using (Html.BeginForm("SearchIndex", "Default1", FormMethod.Get))
+                     {    
+                         <p> Title: @Html.TextBox("SearchString")  
+                         <input type="submit" value="Filter" /></p> 
+                        } *@
+                     @using (Html.BeginForm("Editindex", "Default1", FormMethod.Get))
+                     {    
+                         <label for="inputdefault">用姓名找鮮肉:</label> @Html.TextBox("SearchString")
+                         @*<input class="btn btn-lg btn-primary" type="submit" role="button" value="查詢" />*@
+                        } 
+                </div>    
+            </div>
+         </div> 
+         <div class="panel-body">
+            @{
+                int i = 0;
+                int j = 0;
+                int k = 0;
+                int l = 0;
+                string[] href = new string[20];
+                string[] introduce = new string[20];
+                string[] man = new string[20];
+                int[] ID = new int[20];
+            }
+            @foreach (var item in Model)
+            {
+                
+                href[i] = @item.href;
+                introduce[i] = @item.introduce;
+                man[i] = @item.man;
+                ID[i] = @item.ID;
+                i = i + 1;
+            }
+            @if (i % 5 > 0)
+            {
+                i = (i / 5) + 1;
+            }
+            else
+            {
+                i = i / 5;
+            }
+            @for (j = 0; j < i ; j++)
+            {
+                <div class="row">
+                @for (k = 0; k < 5; k++)
+                {
+                    if (@href[l] == null)
+                    {
+                        break;
+                    }
+                    if (k == 0)
+                    {
+				        <div class="col-sm-5 col-sm-offset-1 col-md-2 col-md-offset-1">
+                            <a href="@Url.Action("Edit", "Default1",new { id=ID[l] })" class="thumbnail" >
+					            <img src="@href[l]" class="img-responsive img-rounded" alt="">
+					            <div class="caption">
+                                    <h4 class="text-center">@man[l]</h4>
+						            <P>@introduce[l]</P>
+					            </div>
+                            </a>
+				        </div>
+                    }
+                    if (k == 1 || k == 3)
+                    {
+				        <div class="col-sm-5 col-md-2">
+                            <a href="@Url.Action("Edit", "Default1",new { id=ID[l] })" class="thumbnail" >
+					            <img src="@href[l]" class="img-responsive img-rounded" alt="">
+					            <div class="caption">
+                                    <h4 class="text-center">@man[l]</h4>
+						            <P>@introduce[l]</P>
+					            </div>
+                           </a>
+				        </div>
+                    }
+                    if (k == 2 || k == 4)
+                    {
+                        <div class="col-sm-5 col-sm-offset-1 col-md-2 col-md-offset-0">
+                            <a href="@Url.Action("Edit", "Default1",new { id=ID[l] })" class="thumbnail" >
+                                <img src="@href[l]" class="img-responsive img-rounded" alt="">
+					            <div class="caption">
+                                    <h4 class="text-center">@man[l]</h4>
+                                    <P>@introduce[l]</P>
+					            </div>
+                            </a>
+				        </div>
+                    }
+                    l = l + 1;
+                }    
+                </div>
+            }
+             </div>
+        </div>
+	</div>

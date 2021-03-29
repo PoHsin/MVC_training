@@ -1,0 +1,79 @@
+﻿@model test.Models.helloworlds
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+   <div class="row">
+       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-push-3">
+           <div class="page-header">
+                <h1>Welcome fresh meat</h1>
+            </div>
+                @using (Html.BeginForm()) 
+                {
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        <legend>helloworld</legend>
+                        <div class="form-group">
+                            <label for="man">綽號</label>
+                            <input type="text" class="form-control" name="man" id="man" placeholder="請輸入您的綽號">
+                            @*<div class="editor-field form-controll" name="name" id="name">
+                                @Html.EditorFor(model => model.man)
+                                @Html.ValidationMessageFor(model => model.man)
+                            </div>*@
+                        </div>
+                        <div class="form-group">
+                            <label for="age">年齡</label>
+                            <input type="text" class="form-control" name="age" id="age" placeholder="未滿18不行唷">
+                            @*<div class="editor-field">
+                                @Html.EditorFor(model => model.age)
+                                @Html.ValidationMessageFor(model => model.age)
+                            </div>*@
+                        </div>
+                        <div class="form-group">
+                            <label for="introduce">自我介紹</label>
+                            <input type="text" class="form-control" name="introduce" id="introduce" placeholder="你是否這樣常常問自己">
+                            @*<div class="editor-field">
+                            @Html.EditorFor(model => model.introduce)
+                            @Html.ValidationMessageFor(model => model.introduce)
+                            </div>*@
+                        </div>
+
+                         <div class="form-group">
+                            <label for="skill">人氣投票</label>
+                            <input type="text" class="form-control" name="skill" id="skill" placeholder="">
+                            @*<div class="editor-field">
+                            @Html.EditorFor(model => model.skill)
+                            @Html.ValidationMessageFor(model => model.skill)
+                            </div>*@
+                        </div>
+
+                        <div class="form-group">
+                            <label for="href">照片連結</label>
+                            <input type="text" class="form-control" name="href" id="href" placeholder="http://">
+                            @*<div class="editor-field">
+                            @Html.EditorFor(model => model.href)
+                            @Html.ValidationMessageFor(model => model.href)
+                            </div>*@
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">價格</label>
+                            <input type="text" class="form-control" name="price" id="price" placeholder="給自己標個價吧">
+                            @*<div class="editor-field">
+                            @Html.EditorFor(model => model.href)
+                            @Html.ValidationMessageFor(model => model.href)
+                            </div>*@
+                        </div>
+
+                        <p>
+                            <input class="btn btn-lg btn-primary" type="submit" value="Create" />
+                        </p>
+                    </fieldset>
+                }              
+        </div>
+    </div>    
+</div>
+

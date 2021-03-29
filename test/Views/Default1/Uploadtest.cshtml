@@ -1,0 +1,182 @@
+﻿@model test.Models.helloworlds
+
+@{
+    ViewBag.Title = "Uploadtest";
+}
+<style>
+		/*img{
+			max-width:300px;
+			max-height:300px;
+		}*/
+        .bar {
+        height: 18px;
+        background: green;
+        }
+</style>
+<div class="container">
+    <div class="row" id="row">
+        <input id="fileupload" type="file" name="files[]" data-url="" multiple />
+    </div>
+</div>
+<br>
+<br>
+<br>
+<!-- 进度条 -->
+<div id="progress">
+    <div class="bar" style="width: 0%;"></div>
+</div>
+@*<div class="container">
+        <form id="fileupload" action="UploadProgress.aspx" method="POST" enctype="multipart/form-data">
+            <div class="row fileupload-buttonbar">
+                <div class="col-lg-7">
+                    <span class="btn btn-success fileinput-button">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>選擇檔案</span>
+                        <input id="f3" type="file" name="files[]" multiple>
+                    </span>
+                    <button type="submit" class="btn btn-primary start">
+                        <i class="glyphicon glyphicon-upload"></i>
+                        <span>檔案上傳</span>
+                    </button>
+                    <button type="reset" class="btn btn-warning cancel">
+                        <i class="glyphicon glyphicon-ban-circle"></i>
+                        <span>取消上傳</span>
+                    </button>
+                    <button type="button" class="btn btn-danger delete">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        <span>刪除檔案</span>
+                    </button>
+                    <input type="checkbox" class="toggle">
+                    <span class="fileupload-process"></span>
+                </div>
+
+                <div class="col-lg-5 fileupload-progress fade">
+                    <!– 處理進度的Bar –>
+  <div id="progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar progress-bar-success bar" style="width: 0%;"></div>
+  </div>
+                    <!– The extended global progress state –>
+  <div class="progress-extended">&nbsp;</div>
+                </div>
+            </div>
+            <table role="presentation" class="table table-striped">
+                <tbody class="files"></tbody>
+            </table>
+        </form>
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">上傳說明</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>上傳檔案大小限制在 <strong>50 MB</strong> 以下。</li>
+                    <li>限制上傳檔案類型： (<strong>JPG, GIF, PNG 及 MS Office 系列檔案</strong>) .</li>
+                </ul>
+            </div>
+        </div>
+</div>*@
+
+@*  圖片圖片*@
+@*<div class="text-center">
+
+            <p>Upload 1: 
+                <input id="f1" type="file" accept="image/*" >
+            </p>
+            <div id="d1"></div>
+
+            <p>Upload 2：</p>
+                <form id="" enctype="multipart/form-data" action="File/Upload" method="post">
+                    <input id="f2" type="file" accept="image/*" name="uploads[]" multiple="multiple"  >
+                </form>
+            
+            <div id="d2"></div>
+
+            <br/>
+
+             <button id="btnUpload">上傳</button>
+
+           
+        </div>
+
+        <script type="text/javascript">
+            var currentF2Files = [];
+	        $("#f2").change(function(){
+	            $('#d2').html("");
+	            currentF2Files = [];
+		        if (this.files && this.files[0]) {
+			        for(var i=0;i<this.files.length;i++){
+				        var reader = new FileReader();
+				        reader.onload = function (e) {
+					        //$('#blah').attr('src', e.target.result);
+				            $('#d2').append("<img src='" + e.target.result + "' />&nbsp;");
+				        }
+				        reader.readAsDataURL(this.files[i]);
+				        currentF2Files.push(this.files[i]);
+			        }
+		        }
+	        });
+	
+	        $("#f1").change(function(){
+		        if (this.files && this.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (e) {
+				        $('#d1').html("<img src='"+e.target.result+"' />");
+			        }
+			        reader.readAsDataURL(this.files[0]);
+		        }
+	        });
+	        $("#f1,#f2").fileupload({
+	            url: "File/Upload", //上傳位置
+	            autoUpload: false, //是否自動上傳
+	            replaceFileInput: false  //上傳時是否要自動取代選取的檔案項目...預設為true
+	        });
+
+	        $("#btnUpload").click(function (e) {
+	            $("#f2").fileupload('send', //執行上傳功能
+                    { files: $("#f2").prop('files') } //上傳包含的檔案
+                ).success(function () { //上傳成功後會執行此方法
+                    alert("upload success!");
+	            })
+                .error(function () { //上傳失敗時會執行此方法
+                    //alert("upload error!");
+                });
+
+	            $("#f1").fileupload('send', //執行上傳功能
+                    { files: $("#f1").prop('files') } //上傳包含的檔案
+                ).success(function () { //上傳成功後會執行此方法
+                    alert("upload success!");
+                })
+                .error(function () { //上傳失敗時會執行此方法
+                    //alert("upload error!");
+                });
+
+	            e.preventDefault(); //怕網頁會重新整理，取消click後的動作，如不是ASP.NET Webform則不用，因為<form> run at server
+	        });
+        </script>*@
+
+<script src="~/Scripts/jquery.ui.widget.js"></script>
+<script src="~/Scripts/jquery.iframe-transport.js"></script>
+<script src="~/Scripts/jquery.fileupload.js"></script>
+<script>
+    $(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        // 上传完成后的执行逻辑
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                //$("<p/>").text(file.name).appendTo(document.body);
+                $("<p/>").text(file.name).appendTo("#row");
+            });
+        },
+        // 上传过程中的回调函数
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $(".bar").text(progress + '%');
+            $('#progress .bar').css('width',progress + '%');
+        }
+    });
+});
+
+
+</script>

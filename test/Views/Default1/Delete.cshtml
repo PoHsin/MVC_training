@@ -1,0 +1,60 @@
+﻿@model test.Models.helloworlds
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>helloworld</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.man)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.man)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.age)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.age)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.introduce)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.introduce)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.skill)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skill)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.href)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.href)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

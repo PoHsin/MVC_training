@@ -1,0 +1,56 @@
+﻿@model test.Models.helloworlds
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>helloworld</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.man)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.man)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.age)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.age)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.introduce)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.introduce)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.skill)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skill)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.href)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.href)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price)
+    </div>
+
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<test.Models.helloworlds>
+
+@{
+    ViewBag.Title = "rank";
+}
+
+
+<div id="container" style="width: 750px; height: 400px; margin: 0 auto"></div>
+<script>
+    
+</script>
+<script>
+    $(function () {
+        $.get('@Url.Action("get_data", "Default1")', function (response) {
+            console.log(response);
+            var total_i = 0;
+            for (var i = 0; i < response.length; i++)
+            {
+                total_i += parseInt(response[i].skill == '' ? 0 : response[i].skill);
+                //total_i = total_i + parseInt(response[i].skill);
+                //parseInt(response[i].skill == "" ? 0 : response[i].skill)
+            }
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '得票總計'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    type: 'category'
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.1f}%'
+                        }
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                },
+                series: [{
+                    name: '鮮肉',
+                    colorByPoint: true,
+                    data: [{
+                        name: response[0].man,
+                        y: (parseFloat(response[0].skill) / total_i)*100,
+                    }, {
+                        name: response[1].man,
+                        y: (parseFloat(response[1].skill)/ total_i)*100,
+                    }, {
+                        name: response[2].man,
+                        y: (parseFloat(response[2].skill)/ total_i)*100,
+                    }, {
+                        name: response[3].man,
+                        y: (parseFloat(response[3].skill)/ total_i)*100,
+                    }, {
+                        name: response[4].man,
+                        y: (parseFloat(response[4].skill)/ total_i)*100,
+                    }, {
+                        name: response[5].man,
+                        y: (parseFloat(response[5].skill)/ total_i)*100,
+                    }]
+                }],
+            });
+        });
+    })
+</script>

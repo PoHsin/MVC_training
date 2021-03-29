@@ -1,0 +1,93 @@
+﻿
+@model test.Models.helloworlds
+
+@{
+    ViewBag.Title = "Edit";
+}
+@Html.HiddenFor(model => model.ID)
+<div class="container">
+   <div class="row">
+       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-push-3">
+           <div class="page-header">
+                <h2>Edit</h2>
+            </div>
+                    <fieldset>
+                        <legend>helloworld</legend>
+                        <form id ="EditForm">
+                        <div class="form-group">
+                            <label for="man">綽號</label>
+                            <input type="text" class="form-control" name="man" id="man" value="@Model.man" placeholder="請輸入您的綽號">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">年齡</label>
+                            <input type="text" class="form-control" name="age" id="age" value="@Model.age" placeholder="未滿18不行唷">
+                        </div>
+                        <div class="form-group">
+                            <label for="introduce">自我介紹</label>
+                            <input type="text" class="form-control" name="introduce" id="introduce" value="@Model.introduce" placeholder="你是否這樣常常問自己">
+                        </div>
+
+                         <div class="form-group">
+                            <label for="skill">人氣投票</label>
+                            <input type="text" class="form-control" name="skill" id="skill" value="@Model.skill" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="href">照片連結</label>
+                            <input type="text" class="form-control" name="href" id="href" value="@Model.href" placeholder="http://">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">價格</label>
+                            <input type="text" class="form-control" name="price" id="price" value="@Model.price" placeholder="給自己標個價吧">
+                        </div>
+                                </form>
+                            <button type="button" class="btn btn-lg btn-primary" value="Edit" onclick="btn_edit()">Edit</button>
+                            <button type="button" class="btn btn-lg btn-danger" value="Delete" onclick="btn_del()">Delete</button>
+                    </fieldset>            
+        </div>
+    </div>    
+</div>
+
+<script>
+
+    function btn_del() {
+        var i ="@Url.Action("Delete", "Default1", new { id = @Model.ID })"
+        $.post(i,function(response){
+            console.log(response.IsSuccess);
+            if (response.IsSuccess == true) {
+                alert("刪除成功");
+                var url = "@Url.Action("EditIndex", "Default1")";
+                location.href = url;
+            }
+            else{
+                alert("刪除失敗"+response);
+            } 
+        });
+    }
+    function btn_edit() {
+        var myform = $("#EditForm");
+        var dataForm = myform.serialize(); 
+        //var validator = myForm.validate();
+        var i = "@Url.Action("Edit", "Default1" )"
+        $.post(i, dataForm, function (response) {
+            console.log(response.IsSuccess);
+            if (response.IsSuccess == true) {
+                alert(" 1.綽號:" + $("#man").val() +
+                    "\n 2.年齡:" + $("#age").val() +
+                    "\n 3.自我介紹:" + $("#introduce").val() +
+                    "\n 4.人氣投票:" + $("#skill").val() +
+                    "\n 5.照片連結" + $("#href").val() +
+                    "\n 6.價格:" + $("#price").val()
+                   );
+                alert("編輯成功");
+                var url = "@Url.Action("EditIndex", "Default1")";
+                location.href = url;
+            }
+            else {
+                alert("刪除失敗" + response.IsSuccess);
+            }
+        });
+                //location.reload();
+    }
+</script>
