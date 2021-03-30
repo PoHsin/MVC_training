@@ -1,4 +1,5 @@
 # MVC_training
+# 就只是練習
 
 ## 首頁
 ![image](picture/index_1.jpg)
